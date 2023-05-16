@@ -1,0 +1,106 @@
+{
+  "description": {
+    "X": [
+      "gender",
+      "age",
+      "hypertension",
+      "heart_disease",
+      "ever_married",
+      "work_type",
+      "Residence_type",
+      "avg_glucose_level",
+      "bmi",
+      "smoking_status"
+    ],
+    "final_columns": [
+      "gender",
+      "age",
+      "hypertension",
+      "heart_disease",
+      "ever_married",
+      "work_type",
+      "Residence_type",
+      "avg_glucose_level",
+      "bmi",
+      "smoking_status"
+    ],
+    "y": "stroke",
+    "metrics": "accuracy_score"
+  },
+  "operations": [
+    {
+      "operation_number": 1,
+      "operation_name": "fill_nans",
+      "params": {
+        "in_columns": [
+          "bmi"
+        ],
+        "methods": [
+          "mean"
+        ]
+      }
+
+
+    },
+    {
+      "operation_number": 2,
+      "operation_name": "bins",
+      "params": {
+        "in_columns": [
+          "age",
+          "avg_glucose_level",
+          "bmi"
+        ],
+        "methods": [
+          "cut",
+          "cut",
+          "cut"
+        ],
+        "bins_nums": [
+          16,
+          16,
+          16
+        ],
+        "inplaces": [
+          "True",
+          "True",
+          "True"
+        ]
+      }
+    },
+    {
+      "operation_number": 3,
+      "operation_name": "encode_labels",
+      "params": {
+        "in_columns": [
+          "age",
+          "avg_glucose_level",
+          "bmi",
+          "gender",
+          "ever_married",
+          "work_type",
+          "Residence_type",
+          "smoking_status"
+        ]
+      }
+    },
+    {
+      "operation_number": 4,
+      "operation_name": "replace",
+      "params": {
+        "in_columns": [
+          "bmi"
+        ],
+        "old_values": [
+          4
+        ],
+        "new_values": [
+          3
+        ],
+        "inplaces": [
+          "True"
+        ]
+      }
+    }
+  ]
+}
